@@ -9,6 +9,11 @@ Dictionary<int, int> vendingMachine = new Dictionary<int, int>()
         { 20, 1 }
     };
 
+/*
+ * Accepts coins and the number of each coin, the item price, and the money the customer paid. 
+ * Calculates the change that should be returned to the customer. The change is a Dictionary
+ * represents the number of each coin.
+ */
 Dictionary<int, int>? Purchase(Dictionary<int, int> vendingMachine, int price, int payment)
 {
     Dictionary<int, int> originalVendingMachine = new Dictionary<int, int>(vendingMachine);
@@ -95,6 +100,11 @@ else
     Console.WriteLine("\nFailed to purchase");
 }
 
+
+/*
+ * Accepts a string and converts every consecutive letter appeared more than twice
+ * to the form of that letter followed by the number of occurences of that letter.
+ */
 String CompressString(String testString)
 {
     List<char> consecutiveLetters = new List<char>();
@@ -135,7 +145,9 @@ String CompressString(String testString)
 
 Console.WriteLine(CompressString("RTFFFFYYUPPPEEEUU"));
 
-
+/*
+ * Accepts an alphanumeric string and expands number to the consecutive letters that appeared before the number.
+ */
 String DecompressString(String testString)
 {
     StringBuilder sb = new StringBuilder();
