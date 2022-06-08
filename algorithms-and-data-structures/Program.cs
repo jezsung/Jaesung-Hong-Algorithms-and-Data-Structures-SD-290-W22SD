@@ -95,9 +95,6 @@ else
     Console.WriteLine("\nFailed to purchase");
 }
 
-
-
-
 String CompressString(String testString)
 {
     List<char> consecutiveLetters = new List<char>();
@@ -137,3 +134,25 @@ String CompressString(String testString)
 }
 
 Console.WriteLine(CompressString("RTFFFFYYUPPPEEEUU"));
+
+
+String DecompressString(String testString)
+{
+    StringBuilder sb = new StringBuilder();
+
+    foreach (char letter in testString)
+    {
+        if (char.IsDigit(letter))
+        {
+            sb.Append(new String(sb[sb.Length - 1], int.Parse(letter.ToString()) - 1));
+        }
+        else
+        {
+            sb.Append(letter);
+        }
+    }
+
+    return sb.ToString();
+}
+
+Console.WriteLine(DecompressString("RTF4YYUP3E3UU"));
