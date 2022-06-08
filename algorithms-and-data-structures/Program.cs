@@ -1,4 +1,6 @@
-﻿Dictionary<int, int> vendingMachine = new Dictionary<int, int>()
+﻿using System.Text;
+
+Dictionary<int, int> vendingMachine = new Dictionary<int, int>()
     {
         { 1, 15 },
         { 2, 12 },
@@ -92,3 +94,46 @@ else
 {
     Console.WriteLine("\nFailed to purchase");
 }
+
+
+
+
+String CompressString(String testString)
+{
+    List<char> consecutiveLetters = new List<char>();
+
+    StringBuilder sb = new StringBuilder();
+
+    foreach (char letter in testString)
+    {
+        if (consecutiveLetters.Count > 0 && consecutiveLetters.First() != letter)
+        {
+            if (consecutiveLetters.Count > 2)
+            {
+                sb.Append(consecutiveLetters.First() + $"{consecutiveLetters.Count}");
+            }
+            else
+            {
+                sb.Append(consecutiveLetters.Aggregate("", (p, c) => p + c));
+            }
+
+            consecutiveLetters.Clear();
+        }
+
+        consecutiveLetters.Add(letter);
+    }
+
+    if (consecutiveLetters.Count > 2)
+    {
+        sb.Append(consecutiveLetters.First() + $"{consecutiveLetters.Count}");
+    }
+    else
+    {
+        sb.Append(consecutiveLetters.Aggregate("", (p, c) => p + c));
+    }
+
+
+    return sb.ToString();
+}
+
+Console.WriteLine(CompressString("RTFFFFYYUPPPEEEUU"));
